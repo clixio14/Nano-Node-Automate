@@ -23,7 +23,7 @@ The script also installs a mini dashboard script for your Nano Node
 3. Installs 7zip (to extract ledger snapshot)
 4. Creates Dashboard script (A tiny custom script)
 5. Creates Folders
-6. Odometer Setup (If user wants to check Cumulative Uptime of the Node)
+6. Odometer Setup (To check Cumulative Uptime of the Node)
 7. Downloads latest Ledger Snapshot (using -nc to skip if exists)
 8. Extracts the downloaded 7zip file (Hence step 3 was required)
 9. Create config-node.toml
