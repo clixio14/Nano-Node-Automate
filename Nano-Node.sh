@@ -70,6 +70,10 @@ sleep 45
 echo "# Adding a cron job + odometer to be able to check the node's Cumulative Uptime whenever you want"
 # 15. Odometer Setup
 sudo chmod 777 /home/nano-data/
+# Create Cronjob file
+sudo touch /home/nano-data/uptime_minutes.txt
+sudo chmod 777 /home/nano-data/uptime_minutes.txt
+# Run Cronjob
 (crontab -l 2>/dev/null; echo "* * * * * pgrep nano_node && echo \"1\" >> /home/nano-data/uptime_minutes.txt") | crontab -
 echo "# Odometer is now active and will record every minute the node is running"
 sleep 15
