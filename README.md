@@ -9,7 +9,7 @@ Login to your terminal via SSH.
 Paste this single line (including curl and bash) into the terminal and hit ENTER button:
 
 curl -sL https://raw.githubusercontent.com/clixio14/Nano-Node-Automate/refs/heads/main/Nano-Node.sh | bash
-
+  
 The above single command executes the entire script.  
 It runs the latest version of Nano Node + Fast Sync.  
 It will also save you nearly 90+ hours of bootstrapping time and avoids 4TB or Disk IO usage.  
