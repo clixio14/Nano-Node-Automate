@@ -20,14 +20,21 @@ run_dashboard() {
     python3 -c "print(f'Active Uptime %|{($m / $total_mins * 100):.2f}%')"
     stats=$(docker stats nano-node --no-stream --format "{{.CPUPerc}}|{{.MemUsage}}")
     cpu_perc=$(echo $stats | cut -d'|' -f1 | tr -d '%'); mem_usage=$(echo $stats | cut -d'|' -f2 | sed 's/GiB/ GB/g; s/MiB/ MB/g')
-    max_ghz=$(lscpu | grep "max MHz" | awk '{print $4/1000 " GHz"}' || echo "N/A"); physical_cores=$(lscpu -p | grep -v '^#' | sort -u -t, -k 2,4 | wc -l)
+    # Using /proc/cpuinfo for current CPU frequency (note: this is the live frequency, not the rated max)
+    max_ghz=$(awk '/^cpu MHz/{printf "%.2f GHz\n", $4/1000; exit}' /proc/cpuinfo)
+    [ -z "$max_ghz" ] && max_ghz="N/A"
+    physical_cores=$(lscpu -p | grep -v '^#' | sort -u -t, -k 2,4 | wc -l)
     sys_total=$(free -g | awk '/^Mem:/{print $2}')
     python3 -c "perc=$cpu_perc; cores=$physical_cores; max_g='$max_ghz'; ram_str='$mem_usage'; sys_tot=$sys_total;
 parts=ram_str.split(); val=float(parts[0]); unit=parts[1];
 ram_gb = val if unit=='GB' else val/1024
 total_impact = ram_gb + (sys_tot * 0.25)
-cpu_w=(cores*5)*(perc/100); ram_w=total_impact*1.5; 
-print(f'CPU Usage|{(perc/100 * float(max_g.split()[0])):.2f} GHz / {max_g}\nCPU Core Usage|{max(0.01, round(perc/100, 2))} core / {cores} cores\nRAM Usage|{ram_str}\nPower Consumption (Est.)|{(cpu_w + ram_w):.2f} Watts (Incl. Ledger Cache Overhead)')"
+cpu_w=(cores*5)*(perc/100); ram_w=total_impact*1.5;
+if max_g not in ('N/A', ''):
+    cpu_ghz_str = f'{perc/100 * float(max_g.split()[0]):.2f} GHz / {max_g}'
+else:
+    cpu_ghz_str = 'N/A'
+print(f'CPU Usage|{cpu_ghz_str}\nCPU Core Usage|{max(0.01, round(perc/100, 2))} core / {cores} cores\nRAM Usage|{ram_str}\nPower Consumption (Est.)|{(cpu_w + ram_w):.2f} Watts (Incl. Ledger Cache Overhead)')"
     IFACE=$(ip route get 1.1.1.1 | awk '{print $5}'); read rx1 tx1 < <(awk -v iface="$IFACE" '$1 ~ iface {print $2,$10}' /proc/net/dev); sleep 1; read rx2 tx2 < <(awk -v iface="$IFACE" '$1 ~ iface {print $2,$10}' /proc/net/dev)
     echo "Internet Usage|$(echo "scale=1; ($rx2-$rx1)*8/1048576" | bc) Mbps Down / $(echo "scale=1; ($tx2-$tx1)*8/1048576" | bc) Mbps Up"
     tel=$(curl -s -d '{"action":"telemetry"}' http://localhost:7076)
