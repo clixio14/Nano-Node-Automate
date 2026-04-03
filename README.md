@@ -3,7 +3,7 @@
 User friendly (Even Users with just very basic Linux knowledge can run a Nano Node on Linux)
 Beginner friendly + complete automation
 
-Get a new Linux Server with Ubuntu OS (VPS or Dedicated Server).
+Get a new Linux Server with Ubuntu OS (VDS or Dedicated Server).
 Login to your terminal via SSH.
 
 Paste this single line (including curl and bash) into the terminal and hit ENTER button:
@@ -44,7 +44,7 @@ After complete auto installation and running of the node, to see a live mini das
 
 # Note 1 (System Specs for Nano Node)
 To run a normal Nano Node, below is the minimum System Specs required for your Linux server, :
-1. CPU: 2 Cores
+1. CPU: 4 Cores
 2. RAM: 6 GB
 3. Storage: 200 GB available disk space
 4. Internet Speed: 80 Mbps up/down (10 MB/s)
