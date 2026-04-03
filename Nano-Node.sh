@@ -22,48 +22,42 @@ sudo mkdir -p /home/nano-data/Nano/
 # Ensure permissions for the odometer file
 sudo chown -R $USER:$USER /home/nano-data/
 
-echo "# Adding a cron job + odometer to be able to check the node's Cumulative Uptime whenever you want"
-echo "# Cumulative Uptime = The actual uptime of the node ever since first run, minus, the node restarts or stops or server resets/shutdowns"
-# 6. Odometer Setup
-(/usr/bin/crontab -l 2>/dev/null; echo "* * * * * /usr/bin/pgrep nano_node && echo \"1\" >> /home/nano-data/uptime_minutes.txt") | /usr/bin/crontab -
-echo "# Odometer is now active and will record every minute the node is running"
-
 sudo apt install -y aria2
 
 echo "# let's download the latest snapshot of the ledger even before running the Nano Node."
 echo "# This is so that we can save nearly 90+ hours of boostrapping/syncing which requires unneccessarily high RAM/Disk IO usage." 
 echo "# Downloading the zip file of the latest snapshot of the Nano Node ledger"
-# 7. Ledger Download (using -nc to skip if exists)
+# 6. Ledger Download (using -nc to skip if exists)
 aria2c -x 16 -s 16 -o Nano_Snapshot.7z -d /home/nano-data/Nano/ $(curl -s https://s3.us-east-2.amazonaws.com/repo.nano.org/snapshots/latest)
 echo "# Download Complete"
 
 echo "# Exctracting the Zip File"
-# 8. Extraction
+# 7. Extraction
 7z x /home/nano-data/Nano/Nano_Snapshot.7z -o/home/nano-data/Nano/ -y
 echo "# Ledger snapshot has been downloaded and Extracted into nano-data/Nano"
 
 echo "# Next, let's create (prefilled) standard Config Files if we need to change it later."
 echo "# Creating config-node.toml"
-# 9. Node Config
+# 8. Node Config
 curl -sL https://pastebin.com/raw/8ibFAd3F -o /home/nano-data/Nano/config-node.toml
 echo "# Creating config-rpc.toml"
-# 10. RPC Config
+# 9. RPC Config
 curl -sL https://pastebin.com/raw/pTyMw7mF -o /home/nano-data/Nano/config-rpc.toml
 
 echo "# Next let's install docker and run the latest version of Nano Node in it"
-# 11. Update for Docker
+# 10. Update for Docker
 sudo apt update
 echo "# Installing Docker"
-# 12. Docker install
+# 11. Docker install
 sudo apt install -y docker.io
 echo "# Starting Docker"
-# 13. Service start
+# 12. Service start
 sudo service docker start
-# 14. Group setup
+# 13. Group setup
 sudo usermod -aG docker $USER
 
 echo "# Now let's download the latest version of the Nano Node and start it"
-# 15. Docker Run ((First run of Fast Sync'd Nano Node)
+# 14. Docker Run ((First run of Fast Sync'd Nano Node)
 sudo docker run --restart=unless-stopped -d \
   -p 7075:7075 \
   -p 127.0.0.1:7076:7076 \
@@ -71,12 +65,18 @@ sudo docker run --restart=unless-stopped -d \
   -v /home/nano-data:/root \
   --name nano-node nanocurrency/nano:V28.2
 
-echo "# That's it, your Nano Node will start running with almost 98% sync because we already downloaded the latest snapshot of the ledger"
+echo "# Adding a cron job + odometer to be able to check the node's Cumulative Uptime whenever you want"
+echo "# Cumulative Uptime = The actual uptime of the node ever since first run, minus, the node restarts or stops or server resets/shutdowns"
+# 15. Odometer Setup
+(crontab -l 2>/dev/null; echo "* * * * * pgrep nano_node && echo \"1\" >> /home/nano-data/uptime_minutes.txt") | crontab -
+echo "# Odometer is now active and will record every minute the node is running"
+
+echo "# That's it, your Nano Node is running with almost 98% sync because we already downloaded the latest snapshot of the ledger"
 echo "# You have saved nearly 90+ hours of bootstrapping time and 4TB of Write IO data by using Fast Sync technique"
 
 echo "# ------------------------------------------------------------"
 echo " "
-echo -e "# To See a live Dashboard for your node just type: \e[35mdashboard.sh\e[0m"
+echo -e "# To See a live Dashboard open a new terminal & just type: \e[35mdashboard.sh\e[0m"
 echo " "
 echo "# ------------------------------------------------------------"
 
