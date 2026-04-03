@@ -3,7 +3,7 @@
 set -e
 
 # 1. Update and upgrade
-sudo apt update && sudo apt upgrade -y
+sudo apt update -y
 
 # 2. Basic tools
 sudo apt install -y build-essential curl git
