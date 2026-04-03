@@ -28,7 +28,7 @@ echo "# Cumulative Uptime = The actual uptime of the node ever since first run, 
 (crontab -l 2>/dev/null; echo "* * * * * pgrep nano_node && echo \"1\" >> /home/nano-data/uptime_minutes.txt") | crontab -
 echo "# Odometer is now active and will record every minute the node is running"
 
-sudo apt install aria2
+sudo apt install -y aria2
 
 echo "# let's download the latest snapshot of the ledger even before running the Nano Node."
 echo "# This is so that we can save nearly 90+ hours of boostrapping/syncing which requires unneccessarily high RAM/Disk IO usage." 
