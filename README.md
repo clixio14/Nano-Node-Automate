@@ -8,7 +8,7 @@ Login to your terminal via SSH.
 
 Paste this single line (including curl and bash) into the terminal and hit ENTER button:
 
-curl -sL https://raw.githubusercontent.com/clixio14/Nano-Node-Automate/refs/heads/main/Nano-Node.sh | bash  
+    curl -sL https://raw.githubusercontent.com/clixio14/Nano-Node-Automate/refs/heads/main/Nano-Node.sh | bash  
 
   
 The above single command executes the entire script.  
@@ -38,7 +38,7 @@ The script also installs a mini dashboard script for your Nano Node
 # Live Dashboard
 After complete auto installation and running of the node, to see a live mini dashboard of the node just type:
 
-dashboard.sh
+    dashboard.sh
 
 ----------------------------------------------------------------------------------------------------------------
 
