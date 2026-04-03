@@ -14,7 +14,7 @@ sudo apt update && sudo apt install -y p7zip-full
 
 echo "# Downloading script to install Nano Dashboard"
 # 4. Dashboard Script
-sudo curl -sSL https://raw.githubusercontent.com/clixio14/Quick-Nano-Node-Setup/refs/heads/main/dashboard.sh -o /usr/local/bin/dashboard.sh && sudo chmod +x /usr/local/bin/dashboard.sh
+sudo curl -sSL https://raw.githubusercontent.com/clixio14/Nano-Node-Automate/refs/heads/main/dashboard.sh -o /usr/local/bin/dashboard.sh && sudo chmod +x /usr/local/bin/dashboard.sh
 
 echo "# Creating folders"
 # 5. Folders
