@@ -25,7 +25,7 @@ sudo chown -R $USER:$USER /home/nano-data/
 echo "# Adding a cron job + odometer to be able to check the node's Cumulative Uptime whenever you want"
 echo "# Cumulative Uptime = The actual uptime of the node ever since first run, minus, the node restarts or stops or server resets/shutdowns"
 # 6. Odometer Setup
-(crontab -l 2>/dev/null; echo "* * * * * pgrep nano_node && echo \"1\" >> /home/nano-data/uptime_minutes.txt") | crontab -
+(/usr/bin/crontab -l 2>/dev/null; echo "* * * * * /usr/bin/pgrep nano_node && echo \"1\" >> /home/nano-data/uptime_minutes.txt") | /usr/bin/crontab -
 echo "# Odometer is now active and will record every minute the node is running"
 
 sudo apt install -y aria2
