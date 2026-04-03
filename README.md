@@ -44,16 +44,15 @@ dashboard.sh
 
 # Note 1 (System Specs for Nano Node)
 To run a normal Nano Node, below is the recommended System Specs for your Linux server, :
-1. CPU: 4 Cores
-2. RAM: 8GB
-3. Disk: SSD (NVME Preferred)
-4. Storage: 300 GB available disk space
-5. Internet Speed: 20 Mbps up/down
+1. CPU: 2 Cores
+2. RAM: 8 GB
+3. Storage: 200 GB available disk space
+4. Internet Speed: 20 Mbps up/down
 
 # Note 2 (System Specs for Representative Nano Node)
 To run a Representative Node, below is the "minimum" System Specs for your Linux server, :
 1. CPU: 4 Cores
-2. RAM: 16GB
+2. RAM: 16 GB
 3. Disk: SSD (NVME Preferred)
-4. Storage: 500 GB available disk space
+4. Storage: 400 GB available disk space
 5. Internet Speed: 50 Mbps up/down
