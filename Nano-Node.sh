@@ -65,13 +65,16 @@ sudo docker run --restart=unless-stopped -d \
   -v /home/nano-data:/root \
   --name nano-node nanocurrency/nano:V28.2
 
+# Wait 45 seconds to ensure the node has actually initialized
+sleep 45
 echo "# Adding a cron job + odometer to be able to check the node's Cumulative Uptime whenever you want"
-echo "# Cumulative Uptime = The actual uptime of the node ever since first run, minus, the node restarts or stops or server resets/shutdowns"
 # 15. Odometer Setup
+sudo chmod 777 /home/nano-data/
 (crontab -l 2>/dev/null; echo "* * * * * pgrep nano_node && echo \"1\" >> /home/nano-data/uptime_minutes.txt") | crontab -
 echo "# Odometer is now active and will record every minute the node is running"
-
-echo "# That's it, your Nano Node is running with almost 98% sync because we already downloaded the latest snapshot of the ledger"
+sleep 15
+echo "# Node setup complete"
+echo "# Your Nano Node is running with almost 98% sync because we already downloaded the latest snapshot of the ledger"
 echo "# You have saved nearly 90+ hours of bootstrapping time and 4TB of Write IO data by using Fast Sync technique"
 
 echo "# ------------------------------------------------------------"
