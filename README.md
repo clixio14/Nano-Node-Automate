@@ -36,7 +36,7 @@ The script also installs a mini dashboard script for your Nano Node
 16. Refresh group (Script End. Dsiplays a useful Dashboard command)
 
 # Live Dashboard
-After complete auto installation and running of the node, to see a mini dashboard of the node just type:
+After complete auto installation and running of the node, to see a live mini dashboard of the node just type:
 
 dashboard.sh
 
