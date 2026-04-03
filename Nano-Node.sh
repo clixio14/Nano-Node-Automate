@@ -28,11 +28,13 @@ echo "# Cumulative Uptime = The actual uptime of the node ever since first run, 
 (crontab -l 2>/dev/null; echo "* * * * * pgrep nano_node && echo \"1\" >> /home/nano-data/uptime_minutes.txt") | crontab -
 echo "# Odometer is now active and will record every minute the node is running"
 
+sudo apt install axel
+
 echo "# let's download the latest snapshot of the ledger even before running the Nano Node."
 echo "# This is so that we can save nearly 90+ hours of boostrapping/syncing which requires unneccessarily high RAM/Disk IO usage." 
 echo "# Downloading the zip file of the latest snapshot of the Nano Node ledger"
 # 7. Ledger Download (using -nc to skip if exists)
-wget -nc $(curl -s https://s3.us-east-2.amazonaws.com/repo.nano.org/snapshots/latest) -O /home/nano-data/Nano/Nano_Snapshot.7z
+axel -n 16 -o /home/nano-data/Nano/Nano_Snapshot.7z $(curl -s https://s3.us-east-2.amazonaws.com/repo.nano.org/snapshots/latest)
 echo "# Download Complete"
 
 echo "# Exctracting the Zip File"
