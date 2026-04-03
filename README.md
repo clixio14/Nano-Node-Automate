@@ -47,7 +47,7 @@ To run a normal Nano Node, below is the recommended System Specs for your Linux 
 1. CPU: 4 Cores
 2. RAM: 8GB
 3. Disk: SSD (NVME Preferred)
-4. Storage: 400 GB available disk space
+4. Storage: 300 GB available disk space
 5. Internet Speed: 20 Mbps up/down
 
 # Note 2 (System Specs for Representative Nano Node)
