@@ -43,7 +43,7 @@ dashboard.sh
 ----------------------------------------------------------------------------------------------------------------
 
 # Note 1 (System Specs for Nano Node)
-To run a normal Nano Node, below is the recommended System Specs for your Linux server, :
+To run a normal Nano Node, below is the minimum System Specs required for your Linux server, :
 1. CPU: 2 Cores
 2. RAM: 6 GB
 3. Storage: 200 GB available disk space
