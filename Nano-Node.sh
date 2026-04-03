@@ -70,8 +70,18 @@ sleep 45
 echo "# Adding a cron job + odometer to be able to check the node's Cumulative Uptime whenever you want"
 # 15. Odometer Setup
 sudo chmod 777 /home/nano-data/
+# Create Cronjob file
+sudo touch /home/nano-data/uptime_minutes.txt
+sudo chmod 777 /home/nano-data/uptime_minutes.txt
 # Run Cronjob
-(crontab -l 2>/dev/null; echo "* * * * * pgrep nano_node && echo \"1\" >> /home/nano-data/uptime_minutes.txt") | crontab -
+# FIX 1: Added "|| true" so set -e doesn't kill the subshell when no crontab exists yet
+#         (crontab -l exits with code 1 on a fresh system, causing the subshell to die
+#          before the echo runs, so the cron entry was never actually registered)
+# FIX 2: Replaced "pgrep nano_node" with a docker ps check.
+#         Docker uses PID namespace isolation, so host-level pgrep cannot see processes
+#         inside containers. docker ps checks the container state directly.
+#         Using sudo crontab so the job runs as root and always has docker access.
+(sudo crontab -l 2>/dev/null || true; echo "* * * * * /usr/bin/docker ps -q -f name=nano-node -f status=running | grep -q . && echo \"1\" >> /home/nano-data/uptime_minutes.txt") | sudo crontab -
 echo "# Odometer is now active and will record every minute the node is running"
 sleep 15
 echo "# Node setup complete"
