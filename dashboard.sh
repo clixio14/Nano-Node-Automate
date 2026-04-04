@@ -6,6 +6,8 @@
 # Colors
 MAGENTA='\e[35m'
 RED='\e[31m'
+BLUE=$'\033[94m'
+NC=$'\033[0m'
 RESET='\e[0m'
 
 is_node_running() {
@@ -80,7 +82,7 @@ print(f'CPU Usage|{cpu_ghz_str}\nCPU Core Usage|{max(0.01, round(norm_perc/100, 
     echo "Node Version|$v_maj.$v_min.$v_pat"
     b_cap=$(echo "$tel" | grep -oP '\"bandwidth_cap\":\s*\"\K\d+'); echo "Bandwidth Cap|$((b_cap/1048576)) MB/s"
     echo "Node ID|$(echo "$tel" | grep -oP '\"node_id\":\s*\"\K[^"]+')"
-  } | column -t -s "|" | sed $'s/\(Block Count[ ]*\)\([0-9]\+\)/\1\033[94m\2\033[0m/'
+  } | column -t -s "|" | sed "s/\(Block Count[ ]*\)\([0-9]\+\)/\1${BLUE}\2${NC}/"
 
   echo "---------------------------------------------------------------"
   echo -e " [${RED}X${RESET}] Stop Node   [${RED}S${RESET}] Start Node   [${RED}R${RESET}] Restart Node   [${RED}CTRL+C${RESET}] Exit"
