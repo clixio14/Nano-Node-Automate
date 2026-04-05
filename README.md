@@ -13,8 +13,8 @@ Paste this single line into the terminal and hit ENTER button:
   
 The above single command executes the entire script.  
 It runs the latest version of Nano Node + Fast Sync.  
-It will also save you nearly 90+ hours of bootstrapping time and avoids 4TB or Disk IO usage.  
-The script also installs a mini dashboard script for your Nano Node
+It will also save you nearly 90+ hours of sync time and avoids 4TB or Disk IO usage during bootstrapping.   
+This also installs a live dashboard tool for your Nano Node that you can run with a simple command.
 
 
 # What this script automatically does:
