@@ -6,7 +6,7 @@ Beginner friendly + complete automation
 Get a new Linux Server with Ubuntu OS (VDS or Dedicated Server).
 Login to your terminal via SSH.
 
-Paste this single line (including curl and bash) into the terminal and hit ENTER button:
+Paste this single line into the terminal and hit ENTER button:
 
     curl -sL https://raw.githubusercontent.com/clixio14/Nano-Node-Automate/refs/heads/main/Nano-Node.sh | bash
 
