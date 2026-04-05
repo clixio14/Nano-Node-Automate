@@ -15,28 +15,22 @@ The above single command executes the entire script.
 It runs the latest version of Nano Node + Fast Sync.  
 It will also save you nearly 90+ hours of sync time and avoids 4TB or Disk IO usage during bootstrapping.   
 This also installs a live dashboard tool for your Nano Node that you can run with a simple command.
+Depending on your system specs, your Full sync'd Nano Node will be up and running in under 20 minutes.
 
 
 # What this script automatically does:
-1. Update and upgrade Linux packages
+1. Updates Linux packages
 2. Installs Basic tools
-3. Installs 7zip (to extract ledger snapshot)
-4. Creates Dashboard script (A tiny custom script)
-5. Creates Folders
-6. Odometer Setup (To check Cumulative Uptime of the Node)
-7. Downloads latest Ledger Snapshot
-8. Extracts the downloaded 7zip file
-9. Create config-node.toml
-10. Create config-rpc.toml
-11. Update for Docker
-12. Docker install
-13. Service start
-14. Group setup
-15. Docker Run (First run of Fast Sync'd Nano Node)
-16. Refresh group (Script End. Dsiplays a useful Dashboard command)
+3. Downloads a Dashboard tool
+4. Odometer Setup (To check Cumulative Uptime of the Node)
+5. Downloads and extracts latest Ledger Snapshot (using Aria tool for fast download)
+6. Installs and starts docker
+7. Installs and runs Nano Node on a container
+8. Informs users that the Nano Node has started
+9. Informs user a short command to run the dashboard tool if they want to see node status
 
 # Live Dashboard
-After complete auto installation and running of the node, to see a live mini dashboard of the node just type:
+After complete auto installation and running of the node, to see a live dashboard of the node, just type:
 
     dashboard.sh
 
