@@ -15,6 +15,7 @@ The above single command executes the entire script.
 It runs the latest version of Nano Node + Fast Sync.  
 It will also save you nearly 90+ hours of sync time and avoids 4TB or Disk IO usage during bootstrapping.   
 This also installs a live dashboard tool for your Nano Node that you can run with a simple command.
+
 Depending on your system specs, your Full sync'd Nano Node will be up and running in under 20 minutes.
 
 
