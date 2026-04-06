@@ -8,7 +8,7 @@ Login to your terminal via SSH.
 
 Paste this single line into the terminal and hit ENTER button:
 
-    curl -sL https://raw.githubusercontent.com/clixio14/Nano-Node-Automate/refs/heads/main/Nano-Node.sh | bash
+    curl -sL https://raw.githubusercontent.com/clixio14/Nano-Node-Automate/main/Nano-Node.sh | bash
 
   
 The above single command executes the entire script.  
