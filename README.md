@@ -41,13 +41,13 @@ After complete auto installation and running of the node, to see a live dashboar
 To run a normal Nano Node, below is the minimum System Specs required for your Linux server, :
 1. CPU: 4 Cores
 2. RAM: 6 GB
-3. Storage: 200 GB available disk space
-4. Internet Speed: 80 Mbps up/down (10 MB/s)
+3. Storage: 400 GB available disk space
+4. Internet Speed: 160 Mbps up/down (20 MB/s)
 
 # Note 2 (System Specs for Representative Nano Node)
 To run a Representative Node, below is the "minimum" System Specs for your Linux server, :
 1. CPU: 4 Cores
 2. RAM: 16 GB
 3. Disk: SSD (NVME Preferred)
-4. Storage: 400 GB available disk space
+4. Storage: 500 GB available disk space
 5. Internet Speed: 400 Mbps up/down (50 MB/s)
